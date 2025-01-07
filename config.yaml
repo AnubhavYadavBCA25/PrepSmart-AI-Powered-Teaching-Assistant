@@ -1,0 +1,11 @@
+cookie:
+  expiry_days: 30
+  key: abcd
+  name: prepsmart
+credentials:
+  usernames:
+    demo:
+      email: demo@email.com
+      name: Demo Test
+      password: $2b$12$FOlmJf8b9/89/IqEqTah2OEXStNMyyBJ8mgyR/YK9hPDlD7eHjyqG
+      preferred_lang: English

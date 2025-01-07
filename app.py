@@ -1,11 +1,20 @@
 import streamlit as st
 import streamlit_lottie as st_lottie
 from features.functions import load_lottie_file
+from features.auth import authentication
 
 st.set_page_config(page_title="PrepSmart",
             page_icon=":shark:",
             layout="wide",
             initial_sidebar_state="expanded")
+
+# Initialize session state keys
+if 'register' not in st.session_state:
+    st.session_state['register'] = False
+if 'authentication_status' not in st.session_state:
+    st.session_state['authentication_status'] = None
+if 'user_data' not in st.session_state:
+    st.session_state['user_data'] = {}
 
 def intro():
     st.header("PrepSmart: AI Powered Teaching Assistant :shark:", divider='rainbow')
@@ -35,6 +44,7 @@ def intro():
         with right_col:
             st.subheader("Features of PrepSmart ℹ️", divider='rainbow')
             features = [
+                        "**Personal Mentor:** PrepSmart provides personalized mentoring to help students achieve their academic goals.",
                         "**Answer Generation:** PrepSmart can generate answers for any given text based on mark scheme.",
                         "**Question Bank:** PrepSmart can create question bank for any subject and any topic.",
                         "**Study Planner:** PrepSmart can plan study schedule for students.",
@@ -76,14 +86,21 @@ def intro():
         with st.expander("How to contact Team PrepSmart?"):
             st.write("You can contact us from the Contact Us feature in the sidebar navigation.")
 
-pg = st.navigation([
-    st.Page(intro, title="Home", icon="🏠"),
-    st.Page("features/1-Answer-Generation.py", title="Answer Generation", icon="📖"),
-    st.Page("features/2-Ques-Bank.py", title="Question Bank", icon="📚"),
-    st.Page("features/3-Study-Planner.py", title="Study Planner", icon="🗓️"),
-    st.Page("features/4-Ans-Checker.py", title="Answer Checker", icon="🖋️"),
-    st.Page("features/Contact-Us.py", title="Contact Us", icon="📞"),
-    st.Page("features/Student-Dashboard.py", title="Student Dashboard", icon="🧑🏻‍🎓"),
-])
+# Initialize session state for authentication
+authentication()
 
-pg.run()
+# Page Navigation
+if st.session_state["authentication_status"]:
+    pg = st.navigation([
+        st.Page(intro, title="Home", icon="🏠"),
+        st.Page("features/0-Personal-Mentor.py", title="Personal Mentor", icon="🧑🏻‍🏫"),
+        st.Page("features/1-Answer-Generation.py", title="Answer Generation", icon="📖"),
+        st.Page("features/2-Ques-Bank.py", title="Question Bank", icon="📚"),
+        st.Page("features/3-Study-Planner.py", title="Study Planner", icon="🗓️"),
+        st.Page("features/4-Ans-Checker.py", title="Answer Checker", icon="🖋️"),
+        st.Page("features/Contact-Us.py", title="Contact Us", icon="📞"),
+        st.Page("features/Student-Dashboard.py", title="Student Dashboard", icon="🧑🏻‍🎓"),
+        st.Page("features/About-Us.py", title="About Us", icon="🧑🏻‍💻")
+    ])
+
+    pg.run()
