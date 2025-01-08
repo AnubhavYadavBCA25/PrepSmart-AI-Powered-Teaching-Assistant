@@ -25,11 +25,15 @@ def intro():
             st.subheader("Welcome to PrepSmart :shark:", divider='rainbow')
             intro = '''
                     **PrepSmart** is an AI powered teaching assistant that helps students to study effectively and prepare for exams.
-                    It provides features like Answer Generation, Question Bank, Study Planner, Answer Checker and Student Dashboard.
+                    It provides features like Answer Generation, Question Bank, Study Planner, Answer Checker and Contact Us.
                     PrepSmart is integrated with Google AI models to provide accurate and reliable results. With PrepSmart, students can
                     study smartly and achieve better results in exams. PrepSmart is a one-stop solution for all your study needs.
                     It able to generate answers for any given text, create question bank, plan study schedule, check answers, any subject
                     and any topic. PrepSmart is a smart study companion for students.
+
+                    PrepSmart platform is designed to provide personalized mentoring to help students achieve their academic goals. PrepSmart
+                    is a smart study companion for students. PrepSmart is an AI powered teaching assistant that helps students to study effectively
+                    and prepare for exams. PrepSmart is a one-stop solution for all your study needs. 
             '''
             st.markdown(intro)
 
@@ -49,7 +53,6 @@ def intro():
                         "**Question Bank:** PrepSmart can create question bank for any subject and any topic.",
                         "**Study Planner:** PrepSmart can plan study schedule for students.",
                         "**Answer Checker:** PrepSmart can check answers for students and provide feedback.",
-                        "**Student Dashboard:** PrepSmart provides student dashboard to track study progress.",
                         "**Contact Us:** PrepSmart provides contact us feature to get in touch with us."
             ]
 
@@ -99,7 +102,6 @@ if st.session_state["authentication_status"]:
         st.Page("features/3-Study-Planner.py", title="Study Planner", icon="🗓️"),
         st.Page("features/4-Ans-Checker.py", title="Answer Checker", icon="🖋️"),
         st.Page("features/Contact-Us.py", title="Contact Us", icon="📞"),
-        st.Page("features/Student-Dashboard.py", title="Student Dashboard", icon="🧑🏻‍🎓"),
         st.Page("features/About-Us.py", title="About Us", icon="🧑🏻‍💻")
     ])
 
