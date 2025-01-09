@@ -56,3 +56,27 @@ system_instructions_pm = {
     5. Provide response based on query asked by the student.
     """
 }
+
+############################## System and Model Settings for Answer Generation Feature ##############################
+# Generation Configurations
+
+# System Instructions
+
+############################## System and Model Settings for Question Bank Feature ##############################
+# Generation Configurations
+generation_config_qb = {
+  "temperature": 0.2,
+  "top_p": 0.95,
+  "top_k": 40,
+  "max_output_tokens": 1000,
+  "response_mime_type": "text/plain",
+  "frequency_penalty": 0.4,
+  "presence_penalty":0.5
+}
+
+# System Instructions
+system_instructions_qb = {
+    '''You are a Question Bank Maker. You can understand the need and conditions of the students and provide them Questions based on their requirements.
+        You can provide them with questions on various topics, subjects and help them with their studies.
+    '''
+}
