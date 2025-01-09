@@ -2,7 +2,6 @@ import os
 import streamlit as st
 import google.generativeai as genai
 from features.functions import *
-from features.sys_settings import *
 from dotenv import load_dotenv
 from features.auth import get_user_details
 
@@ -16,11 +15,49 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KAY")
 genai.configure(api_key=GEMINI_API_KEY)
 
+# Safett Settings
+safety_settings = [
+    {
+        "category": "HARM_CATEGORY_HARASSMENT",
+        "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+    {
+        "category": "HARM_CATEGORY_HATE_SPEECH",
+        "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+    {
+        "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+        "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+    {
+        "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+        "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+]
+
+# Generation Configurations
+generation_config_qb = {
+  "temperature": 0.2,
+  "top_p": 0.95,
+  "top_k": 40,
+  "max_output_tokens": 1000,
+  "response_mime_type": "text/plain",
+  "frequency_penalty": 0.4,
+  "presence_penalty":0.5
+}
+
+# System Instructions
+system_instructions_qb = {
+    '''You are a Question Bank Maker. You can understand the need and conditions of the students and provide them Questions based on their requirements.
+        You can provide them with questions on various topics, subjects and help them with their studies.
+    '''
+}
+
 # Load model
 model = genai.GenerativeModel(model_name="gemini-1.5-flash-8b",
                               safety_settings=safety_settings,
-                              generation_config=generation_config_pm,
-                              system_instruction=system_instructions_pm)
+                              generation_config=generation_config_qb,
+                              system_instruction=system_instructions_qb)
 
 st.header('Question Bank📚', divider='rainbow')
 with st.expander("What is Question Bank Maker?"):
@@ -28,12 +65,12 @@ with st.expander("What is Question Bank Maker?"):
              and interviews by generating questions based on the topic you provide.""")
     
 with st.form("question_bank_form"):
-    subject = st.text_input("Enter the Subject Name:*")
-    topic = st.text_input("Enter the Topic Name:*")
+    subject = st.text_input("Enter the Subject Name:*", placeholder="Ex: Data Science, Machine Learning or etc.")
+    topic = st.text_input("Enter the Topic Name:*", placeholder="Ex: Linear Regression, Python Programming or etc.")
     num_questions = st.number_input("Number of Questions to Generate:*", min_value=1, max_value=10)
     type_of_questions = st.selectbox("Type of Questions to Generate:*", ["MCQs", "Short Answer", "Long Answer"])
     purpose = st.selectbox("Purpose of Questions:*", ["Exam Preparation", "Interview Preparation", "Assignment"])
-    additional_info = st.text_area("Additional Information:")
+    additional_info = st.text_area("Additional Information:", placeholder="Ex: Provide any additional information if required.")
     st.markdown("*Required**")
     submit_button = st.form_submit_button("Generate Questions")
 
@@ -55,4 +92,4 @@ with st.spinner("Generating Questions..."):
         st.subheader(f"Hello {name}, here are the generated questions for you:")
         st.write(response.text)
     else:
-        st.error("Please fill all the required fields.")
+        st.warning("Please fill all the required fields.")
