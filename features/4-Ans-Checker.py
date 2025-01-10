@@ -74,10 +74,10 @@ with st.expander("What is Answer Checker?"):
 answer_type = st.selectbox("Select the Answer Type", ["Text Based Answer", "Code Based Answer"])
 if answer_type == "Text Based Answer":
     with st.form(key='text_ans'):
-        subject = st.text_input("Enter the Subject*", key="subject")
-        question = st.text_area("Enter the Question*", key="question")
-        marks = st.number_input("Enter the Marks*", key="marks", placeholder="For how many marks is this question? Ex: 5")
-        answer = st.text_area("Enter the Answer*", key="answer")
+        subject = st.text_input("Enter the Subject*", key="subject", placeholder="Ex: Machine Learning")
+        question = st.text_area("Enter the Question*", key="question", placeholder="Ex: What is Machine Learning?")
+        marks = st.number_input("Enter the Marks*", key="marks")
+        answer = st.text_area("Enter the Answer*", key="answer", placeholder="Ex: Machine Learning is a subset of AI that allows machines to learn from data.")
         st.markdown("*Required**")
         submit_button = st.form_submit_button("Check Answer")
     
@@ -114,8 +114,8 @@ else:
         return x+y
         ''')
         purpose = st.multiselect("Enter the Purpose of Check:*",['Optimize Code','Debug Code'])
-        error_msg = st.text_input("Any Error Message (If Debugging):", placeholder="Paste the Error Message, Ex:") # Placeholder is remaining
-        additional_info = st.text_area("Additional Information:", placeholder="") # Placeholder is remaining
+        error_msg = st.text_input("Any Error Message (If Debugging):", placeholder="Paste the Error Message, Ex: TypeError: unsupported operand type(s) for +: 'int' and 'str'")
+        additional_info = st.text_area("Additional Information:", placeholder="Ex: Provide any additional information if required.")
         st.markdown("*Required**")
         submit_button = st.form_submit_button("Submit")
 
