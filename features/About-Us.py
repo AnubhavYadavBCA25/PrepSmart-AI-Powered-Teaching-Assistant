@@ -28,13 +28,20 @@ with st.container(border=True):
         st.markdown('''
                         - **Role:** Developer
                         - **Email:** [![Sparsh Email](https://img.icons8.com/color/30/email.png)]()
-                        - **LinkedIn:** [![Sparsh Jaiswal LinkedIn](https://img.icons8.com/color/30/linkedin.png)]()
-                        - **GitHub:** [![Sparsh Jaiswal GitHub](https://badgen.net/badge/icon/GitHub?icon=github&label)]()
-                        - **Bio:** 
+                        - **LinkedIn:** [![Sparsh Jaiswal LinkedIn](https://img.icons8.com/color/30/linkedin.png)](https://http://www.linkedin.com/in/sparsh-jaiswal-aa903730b/)
+                        - **GitHub:** [![Sparsh Jaiswal GitHub](https://badgen.net/badge/icon/GitHub?icon=github&label)](https://github.com/sparshjais)
+                        - **Bio:** I am a Final Year BCA Data Science student at the SRM Institute of Science and Technology Delhi NCR Campus. With a strong foundation in python
+                             and front-end development, Sparsh is dedicated to blending the power of AI with intuitive web design to craft seamless and engaging user experiences.
                     ''')
     with left_col:
         sparsh_profile = load_lottie_file('animations resources/sparsh_profile.json')
         st_lottie.st_lottie(sparsh_profile, key='sparsh', height=380, width=380 ,loop=True, quality='high')
-
-with st.container(border=True):
-    pass # Continue...
+# Footer
+st.markdown(
+    """
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <div style="text-align:center;">
+        <p>Made with ❤️ by Team PrepSmart.AI @2025</p>
+    </div>
+    """, unsafe_allow_html=True
+)
