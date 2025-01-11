@@ -1,4 +1,5 @@
 import os
+import time
 import streamlit as st
 import google.generativeai as genai
 from dotenv import load_dotenv
@@ -101,7 +102,12 @@ if answer_type == "Text Based Answer":
             """
             response = model.generate_content(prompt)
             st.subheader(f"Hello {name}, Here's Suggestions for your Answer")
-            st.write(response.text)
+            output_text = response.text
+            def stream_output_text():
+                for word in output_text.split(" "):
+                    yield word + " "
+                    time.sleep(0.02)
+            st.write_stream(stream_output_text())
         
         else:
             st.warning("Please fill all the required fields.")
@@ -133,7 +139,12 @@ else:
             """
             response = model.generate_content(prompt)
             st.subheader(f"Hello {name}, Here is Your Correct Code")
-            st.write(response.text)
+            output_code = response.text
+            def stream_output_code():
+                for word in output_code.split(" "):
+                    yield word + " "
+                    time.sleep(0.02)
+            st.write_stream(stream_output_code())
         
         else:
             st.warning("Please fill all the required fields.")

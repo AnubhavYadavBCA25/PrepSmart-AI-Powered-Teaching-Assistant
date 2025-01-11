@@ -1,4 +1,5 @@
 import os
+import time
 import streamlit as st
 import google.generativeai as genai
 from features.functions import *
@@ -40,7 +41,7 @@ generation_config_qb = {
   "temperature": 0.2,
   "top_p": 0.95,
   "top_k": 40,
-  "max_output_tokens": 1000,
+  "max_output_tokens": 1500,
   "response_mime_type": "text/plain",
   "frequency_penalty": 0.4,
   "presence_penalty":0.5
@@ -49,7 +50,17 @@ generation_config_qb = {
 # System Instructions
 system_instructions_qb = {
     '''You are a Question Bank Maker. You can understand the need and conditions of the students and provide them Questions based on their requirements.
-        You can provide them with questions on various topics, subjects and help them with their studies.
+        You can provide them with questions on various topics, subjects and help them with their studies. Generate questions in proper format. Like: Use
+        proper spacing, markdowns and etc. to make question understandable and readable.
+        For MCQ type question, write question and then four options in sequence of 4 lines and then their answers.
+            
+            MCQ Question Example:
+            Ques. 1: What is Machine Learning
+            A) A subset of Artificial Intelligence
+            B) A subset of Data Science
+            C) A subset of Computer Science
+            D) A subset of Mathematics
+            Answer: A) A subset of Artificial Intelligence
     '''
 }
 
@@ -90,6 +101,12 @@ with st.spinner("Generating Questions..."):
         """
         response = model.generate_content(prompt)
         st.subheader(f"Hello {name}, here are the generated questions for you:")
-        st.write(response.text)
+        output = response.text
+        def stream_output():
+            for word in output.split(" "):
+                yield word + " "
+                time.sleep(0.02)
+        st.write_stream(stream_output())
+
     else:
         st.warning("Please fill all the required fields.")
