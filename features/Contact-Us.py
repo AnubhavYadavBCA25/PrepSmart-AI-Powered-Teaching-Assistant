@@ -15,7 +15,7 @@ if category == 'General Feedback':
     with st.form(key='general_feedback'):
         user_name = st.text_input("Your Name:*", value=name)
         user_email = st.text_input("Your Email:*", value=email)
-        rating = st.radio("Please Enter Rating:*",["Excellent 🤩", "Great 😄", "Good 🙂", "Average ☹️", "Poor 😞"])
+        rating = st.radio("Please Enter Rating:*",["Excellent 🤩", "Great 😄", "Good 🙂", "Average ☹️", "Poor 😞"]) # Use st.feedback
         feedback = st.text_area("Your Feedback:*", placeholder="Enter Your Feedback Here")
         st.markdown("*Required**")
         submit_button = st.form_submit_button("Submit")

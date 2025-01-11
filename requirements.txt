@@ -3,3 +3,14 @@ google-generativeai
 streamlit
 streamlit-authenticator
 streamlit-lottie
+langchain-google-genai
+ipykernel
+langchain-community
+langchain
+PyPDF2
+typing-extensions
+tokenizers
+semantic-text-splitter
+
+pypdf
+faiss-cpu
