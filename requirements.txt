@@ -9,8 +9,5 @@ langchain-community
 langchain
 PyPDF2
 typing-extensions
-tokenizers
-semantic-text-splitter
-
 pypdf
 faiss-cpu

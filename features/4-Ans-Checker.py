@@ -3,7 +3,6 @@ import time
 import streamlit as st
 import google.generativeai as genai
 from dotenv import load_dotenv
-from features.functions import *
 from features.auth import get_user_details
 
 load_dotenv()

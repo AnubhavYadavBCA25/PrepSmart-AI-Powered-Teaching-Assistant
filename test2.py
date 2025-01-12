@@ -14,6 +14,9 @@ load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=GOOGLE_API_KEY)
 
+credential_path = "E:\PrepSmart AI Powered Teaching Assist\.streamlit\service_account.json"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
+
 def get_pdf_text(pdf_docs):
     text=""
     for pdf in pdf_docs:
@@ -58,7 +61,7 @@ def get_conversational_chain():
 def user_input(user_question):
     embeddings = GoogleGenerativeAIEmbeddings(model = "models/embedding-001")
     
-    new_db = FAISS.load_local("faiss_index", embeddings)
+    new_db = FAISS.load_local("faiss_index", embeddings,allow_dangerous_deserialization=True)
     docs = new_db.similarity_search(user_question)
 
     chain = get_conversational_chain()
