@@ -84,7 +84,7 @@ if ans_type == "Text Based Answer":
     if generation_type == 'AI Generated Answer':
         with st.form(key='ai_ans'):
             subject = st.text_input("Enter the Subject*", key="subject_ai", placeholder="Ex: Machine Learning")
-            question = st.text_area("Enter the Question*", key="question_ai", placeholder="Ex: What is Machine Learning?")
+            question = st.text_area("Enter the Question*", key="question_ai", placeholder="Ex: What is Machine Learning?", value=None)
             marks = st.number_input("Enter the Marks*", key="marks_ai")
             st.markdown("*Required**")
             submit_button = st.form_submit_button("Check Answer")
@@ -98,7 +98,7 @@ if ans_type == "Text Based Answer":
         with st.spinner('Processing...'):
             if subject and question and marks is not None:
                 prompt = f"""
-                    ## Pending Prompt
+                    Generate the Answer for {subject} subject, for {marks} marks and the question is: {question}.
                 """
                 response = model.generate_content(prompt)
                 st.subheader(f"Hello {name}, Here is Your Answer")
@@ -115,23 +115,27 @@ if ans_type == "Text Based Answer":
         with st.form(key='rag_ans'):
             subject = st.text_input("Enter the Subject*", key="subject_rag", placeholder="Ex: Machine Learning")
             question = st.text_area("Enter the Question*", key="question_rag", placeholder="Ex: What is Machine Learning?")
-            marks = st.number_input("Enter the Marks*", key="marks_rag")
             uploaded_file = st.file_uploader("Choose PDF notes file*", type=["pdf"], accept_multiple_files=True)
             st.markdown("*Required**")
             submit_button = st.form_submit_button("Check Answer")
         if submit_button:
-            if not subject or not question or not marks or not uploaded_file:
+            if not subject or not question or not uploaded_file:
                 st.error("Please fill all the fields")
                 st.stop()
             else:
                 st.success("Your Entries have been submitted successfully.")
         st.divider()
         with st.spinner('Processing...'):
-            if subject and question and marks and uploaded_file is not None:
+            if subject and question and uploaded_file is not None:
                 prompt = f"""
-
+                        {question}
                 """
-                ## RAG Implementation Pending
+                ## RAG Implementation
+                st.subheader(f"Hello {name}, Here is Your Answer")
+                raw_text = get_pdf_text(uploaded_file)
+                text_chunks = get_text_chunks(raw_text)
+                get_vector_store(text_chunks)
+                user_input(prompt)
             else:
                 st.warning("Please fill all the required fields.")
 
@@ -139,8 +143,9 @@ if ans_type == "Text Based Answer":
 else:
     with st.form(key='code_ans'):
         language = st.selectbox("Select Programming Language:*",['Python','Java','JavaScript','C++','C','Go','C#'])
-        question = st.text_area("Enter the Question*", key="question_code", placeholder=f"Ex: Write a {language} program to add two numbers")
+        question = st.text_area("Enter the Question*", key="question_code", placeholder=f"Ex: Write a Python program to add two numbers", value=None)
         additional_info = st.text_area("Enter Additional Info:",key="add_info")
+        st.markdown("*Required**")
         submit_button = st.form_submit_button("Check Answer")
     if submit_button:
         if not language or not question:
