@@ -63,7 +63,7 @@ plan_type = st.selectbox("Select the type of schedule you want to create", ["Stu
 if plan_type == "Study Plan":
     type_of_schedule = st.selectbox("Select the plan time period", ["Daily", "Weekly"])
     if type_of_schedule == "Daily":
-        with st.form("study_planner_form"):
+        with st.form("study_planner_daily_form"):
             start_time = st.time_input("Start Time*")
             purpose = st.selectbox("Purpose*", ["Study", "Revision", "Exam Practice"])
             subject = st.text_input("Subject*", placeholder="Machine Learning", value=None)
@@ -85,9 +85,10 @@ if plan_type == "Study Plan":
             if start_time and purpose and subject and topic and duration is not None:
                 prompt = f"""
                     Create a study plan for {subject} on {topic} for {duration} hours with the purpose of {purpose} starting at {start_time}.
+                    Some additional information: {additional_info}.
                 """
                 response = model.generate_content(prompt)
-                st.subheader(f"Hello {name}, Here is Your Answer")
+                st.subheader(f"Hello {name}, Here is Your Daily {purpose} Plan")
                 output_text = response.text
                 def stream_output_text():
                     for word in output_text.split(" "):
@@ -97,5 +98,103 @@ if plan_type == "Study Plan":
             else:
                 st.warning("Please fill all the required fields.")
     else:
-        pass
-    # Pending...
+        with st.form("study_planner_weekly_form"):
+            start_date = st.date_input("Start Date*")
+            end_date = st.date_input("End Date*")
+            purpose = st.selectbox("Purpose*", ["Study", "Revision", "Exam Practice"])
+            subject = st.text_input("Subject*", placeholder="Machine Learning", value=None)
+            topic = st.text_input("Topics*", placeholder="Data Visualization, Database or etc.", value=None)
+            duration_per_day = st.number_input("Duration in hours per day*")
+            additional_info = st.text_area("Additional Information", placeholder="Any additional information you want to add")
+            st.markdown("*Required**")
+            submit_button = st.form_submit_button("Create Plan")
+        
+        if submit_button:
+            if not start_date or not end_date or not purpose or not subject or not topic or not duration_per_day:
+                st.error("Please fill all the required fields")
+                st.stop()
+            else:
+                st.success("Your Entries have been submitted successfully.")
+        st.divider()
+
+        with st.spinner("Processing..."):
+            if start_date and end_date and purpose and subject and topic and duration_per_day is not None:
+                prompt = f"""
+                    Create a weekly study plan for {subject} on {topic} for {duration_per_day} hours per day with the purpose of {purpose} starting from {start_date} to {end_date}. Some
+                    additional information: {additional_info}.
+                """
+                response = model.generate_content(prompt)
+                st.subheader(f"Hello {name}, Here is Weekly {purpose} Plan")
+                output_text = response.text
+                def stream_output_text():
+                    for word in output_text.split(" "):
+                        yield word + " "
+                        time.sleep(0.02)
+                st.write_stream(stream_output_text())
+            else:
+                st.warning("Please fill all the required fields.")
+
+elif plan_type == "Syllabus Roadmap":
+    with st.form("syllabus_roadmap_form"):
+        subject = st.text_input("Subject*", placeholder="Machine Learning", value=None)
+        syllabus = st.text_area("Syllabus*", placeholder="Syllabus details", value=None)
+        additional_info = st.text_area("Additional Information", placeholder="Any additional information you want to add")
+        submit_button = st.form_submit_button("Create Roadmap")
+        st.markdown("*Required**")
+    
+    if submit_button:
+        if not subject or not syllabus:
+            st.error("Please fill all the required fields")
+            st.stop()
+        else:
+            st.success("Your Entries have been submitted successfully.")
+    st.divider()
+
+    with st.spinner("Processing..."):
+        if subject and syllabus is not None:
+            prompt = f"""
+                Create a syllabus roadmap for {subject} with the following details: {syllabus} and additional information: {additional_info}.
+            """
+            response = model.generate_content(prompt)
+            st.subheader(f"Hello {name}, Here is Your Syllabus Roadmap")
+            output_text = response.text
+            def stream_output_text():
+                for word in output_text.split(" "):
+                    yield word + " "
+                    time.sleep(0.02)
+            st.write_stream(stream_output_text())
+        else:
+            st.warning("Please fill all the required fields.")
+
+else:
+    with st.form("time_management_form"):
+        start_time = st.time_input("Start Time*")
+        end_time = st.time_input("End Time*")
+        purpose = st.selectbox("Purpose*", ["Study", "Revision", "Exam Practice"])
+        additional_info = st.text_area("Additional Information", placeholder="Any additional information you want to add")
+        submit_button = st.form_submit_button("Create Plan")
+        st.markdown("*Required**")
+
+    if submit_button:
+        if not start_time or not end_time or not purpose:
+            st.error("Please fill all the required fields")
+            st.stop()
+        else:
+            st.success("Your Entries have been submitted successfully.")
+    st.divider()
+
+    with st.spinner("Processing..."):
+        if start_time and end_time is not None and purpose is not None:
+            prompt = f"""
+                    Create a time management plan for {purpose} starting at {start_time} and ending at {end_time}. Some additional information: {additional_info}.
+            """
+            response = model.generate_content(prompt)
+            st.subheader(f"Hello {name}, Here is Your Time Management Plan")
+            output_text = response.text
+            def stream_output_text():
+                for word in output_text.split(" "):
+                    yield word + " "
+                    time.sleep(0.02)
+            st.write_stream(stream_output_text())
+        else:
+            st.warning("Please fill all the required fields.")
