@@ -46,7 +46,8 @@ generation_config_sp = {
 
 # System Instruction
 system_instructions = f"""
-            # Pending
+            You are a PrepSmart Study Plan maker, you can design the study plan for students based on their prefference and their need. Try to use
+            emojies which give student an effective and 
 """
 
 model = genai.GenerativeModel(model_name="gemini-1.5-flash",
@@ -54,10 +55,10 @@ model = genai.GenerativeModel(model_name="gemini-1.5-flash",
                                generation_config=generation_config_sp,
                                system_instruction=system_instructions)
 
-st.header('Study Planner🗓️', divider='rainbow')
-with st.expander("What is Study Planner?"):
-    st.write(f"""Study Planner is a AI Powered tool that helps you to plan your study schedule. You can customize your schedule based on your upcoming exams and study goals.
-            Study Planner helps you to stay organized and focused on your studies.""")
+st.header('EduPlanner🗓️', divider='rainbow')
+with st.expander("What is EduPlanner?"):
+    st.write(f"""EduPlanner is a AI Powered tool that helps you to plan your study schedule. You can customize your schedule based on your upcoming exams and study goals.
+            EduPlanner helps you to stay organized and focused on your studies.""")
 
 plan_type = st.selectbox("Select the type of schedule you want to create", ["Study Plan", "Syllabus Roadmap", "Time Management"])
 if plan_type == "Study Plan":

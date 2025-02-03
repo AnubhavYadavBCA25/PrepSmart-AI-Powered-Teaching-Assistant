@@ -6,7 +6,7 @@ user_data = get_user_details()
 name = user_data.get("name")
 email = user_data.get("email")
 
-st.header('Contact Us📞', divider='rainbow')
+st.header('EduConnect📞', divider='rainbow')
 
 # Category
 category = st.selectbox('Enter Query Type:', ['General Feedback', 'Technical Issue', 'Feature Request'])

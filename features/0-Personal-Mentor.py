@@ -72,7 +72,7 @@ model = genai.GenerativeModel(model_name="gemini-1.5-flash-latest",
                               generation_config=generation_config_pm,
                               system_instruction=system_instructions_pm)
 
-st.header('Personal Mentor🧑🏻‍🏫', divider='rainbow')
+st.header('EduMentor🧑🏻‍🏫', divider='rainbow')
 
 # Initialize chat session in Streamlit if not already present
 if "chat_session" not in st.session_state:

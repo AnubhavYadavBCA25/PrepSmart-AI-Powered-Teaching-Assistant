@@ -1,1 +1,1 @@
-# PrepSmart: AI Powered Teaching Assistant
+# PrepSmart: AI Powered Teaching Assistant 🤖

@@ -69,9 +69,9 @@ model = genai.GenerativeModel(model_name="gemini-1.5-flash-8b",
                               generation_config=generation_config_qb,
                               system_instruction=system_instructions_qb)
 
-st.header('Question Bank📚', divider='rainbow')
-with st.expander("What is Question Bank Maker?"):
-    st.write("""Question Bank Maker is a AI Powered Feature that allows you to generate questions on any topic of your choice. It helps you to prepare for exams 
+st.header('EduQuest📚', divider='rainbow')
+with st.expander("What is EduQuest?"):
+    st.write("""EduQuest is a AI Powered Feature that allows you to generate questions on any topic of your choice. It helps you to prepare for exams 
              and interviews by generating questions based on the topic you provide.""")
     
 with st.form("question_bank_form"):

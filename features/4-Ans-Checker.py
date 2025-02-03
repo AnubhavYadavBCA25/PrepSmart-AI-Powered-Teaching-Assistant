@@ -62,10 +62,10 @@ model = genai.GenerativeModel(model_name="gemini-1.5-pro",
                               generation_config=generation_config_ac,
                               system_instruction=system_instructions_ac)
 
-st.header('Answer Checker🖋️', divider='rainbow')
-with st.expander("What is Answer Checker?"):
+st.header('EduGrade🖋️', divider='rainbow')
+with st.expander("What is EduGrade?"):
     st.write("""
-        Answer Checker is an AI Powered tool that can check both text based and code based answers. It can provide feedback to the students based on their
+        EduGrade is an AI Powered tool that can check both text based and code based answers. It can provide feedback to the students based on their
         answers and help them to improve their answers. It can also provide them with the correct answers and help them to understand the concepts. For Code
         based answers, it can check the code written by the students and if code is incorrect, it debugs the code and provide them with the correct code with
         logic explanation.""")
