@@ -91,13 +91,9 @@ if answer_type == "Text Based Answer":
     with st.spinner("Checking the Answer..."):
         if subject and question and marks and answer is not None:
             prompt = f"""
-                Subject: {subject}
-                Question: {question}
-                Marks: {marks}
-                Answer: {answer}
-
-                Check the answer provided by student for that particular subject, question and marks. Try to give suggestions for making the answer
-                more effective and conceptual. Give marks to the student for their provided answer after giving feedback and suggestions.
+                Check the answer for the subject {subject} for the question {question} for {marks} marks. The answer provided by the student is: {answer}.
+                Analyze the answer based on the question and marks, then provide the feedback to the student. Give some score to the answer and provide the
+                effective answer to the student.
             """
             response = model.generate_content(prompt)
             st.subheader(f"Hello {name}, Here's Suggestions for your Answer")
