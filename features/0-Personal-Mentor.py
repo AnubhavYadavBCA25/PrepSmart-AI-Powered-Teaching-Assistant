@@ -41,7 +41,7 @@ generation_config_pm = {
   "temperature": 0.4,
   "top_p": 0.95,
   "top_k": 30,
-  "max_output_tokens": 500,
+  "max_output_tokens": 1000,
   "response_mime_type": "text/plain",
   "frequency_penalty": 0.4,
   "presence_penalty":0.5
