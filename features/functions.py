@@ -1,5 +1,4 @@
 import streamlit as st 
-import streamlit_lottie as st_lottie
 import json
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
