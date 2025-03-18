@@ -129,7 +129,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-.streamlit/
+.streamlit/firestore-key.json
+.streamlit/service_account.json
 
 # Spyder project settings
 .spyderproject
