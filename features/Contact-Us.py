@@ -1,4 +1,5 @@
 import streamlit as st
+import json
 from features.auth import get_user_details
 from google.cloud import firestore
 from google.cloud.firestore import Client
@@ -31,7 +32,7 @@ def post_technical_feedback(db: Client, name, email, subject, description):
 # Post Feature Request
 def post_feature_request(db: Client, name, email, feature_name, description):
     payload = {"name":name, "email":email, "feature_name":feature_name, "description":description}
-    doc_ref = db.collection("user-feature-request").document()
+    doc_ref = db.collection("user-feature-req-feedback").document()
     doc_ref.set(payload)
     return
 

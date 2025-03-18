@@ -12,3 +12,4 @@ typing-extensions
 pypdf
 faiss-cpu
 google-cloud-firestore
+firebase-admin
