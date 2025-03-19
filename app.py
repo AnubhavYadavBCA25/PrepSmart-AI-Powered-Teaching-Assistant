@@ -22,7 +22,7 @@ def intro():
     with st.container():
         left_col, right_col = st.columns(2)
         with left_col:
-            st.subheader("Welcome to PrepSmart :shark:", divider='rainbow')
+            st.subheader("Welcome to PrepSmart🙌🏻", divider='rainbow')
             intro = '''
                     **PrepSmart** is an AI powered teaching assistant that helps students to study effectively and prepare for exams.
                     It provides features like Answer Generation, Question Bank, Study Planner, Answer Checker and Contact Us.
@@ -39,7 +39,7 @@ def intro():
 
         with right_col:
             robot_assist = load_lottie_file("animations resources/robot_assist.json")
-            st_lottie.st_lottie(robot_assist, loop=True, width=500, height=500)
+            st_lottie.st_lottie(robot_assist, loop=True, width=450, height=450)
 
         st.divider()
 
@@ -48,12 +48,12 @@ def intro():
         with right_col:
             st.subheader("Features of PrepSmart ℹ️", divider='rainbow')
             features = [
-                        "**Personal Mentor:** PrepSmart provides personalized mentoring to help students achieve their academic goals.",
-                        "**Answer Generation:** PrepSmart can generate answers for any given text based on mark scheme.",
-                        "**Question Bank:** PrepSmart can create question bank for any subject and any topic.",
-                        "**Study Planner:** PrepSmart can plan study schedule for students.",
-                        "**Answer Checker:** PrepSmart can check answers for students and provide feedback.",
-                        "**Contact Us:** PrepSmart provides contact us feature to get in touch with us."
+                        "**EduMentor:** PrepSmart provides personalized mentoring to help students achieve their academic goals.",
+                        "**EduRAG Assitant:** PrepSmart can generate answers for any given text based on mark scheme.",
+                        "**EduQuest:** PrepSmart can create question bank for any subject and any topic.",
+                        "**EduPlanner:** PrepSmart can plan study schedule for students.",
+                        "**EduGrade:** PrepSmart can check answers for students and provide feedback.",
+                        "**EduConnect:** PrepSmart provides contact us feature to get in touch with us."
             ]
 
             for feature in features:
@@ -62,9 +62,40 @@ def intro():
 
         with left_col:
             feature_animation = load_lottie_file("animations resources/features.json")
-            st_lottie.st_lottie(feature_animation, loop=True, width=500, height=500)
+            st_lottie.st_lottie(feature_animation, loop=True, width=450, height=450)
 
         st.divider()
+    
+    with st.container(border=True):
+        left_col, right_col = st.columns(2)
+
+        with left_col:
+            st.subheader("Why PrepSmart?🤔", divider='rainbow')
+
+            with st.expander("✅AI-Powered Answer Generation"):
+                st.write("PrepSmart can generate answers for any given text based on mark scheme.")
+            with st.expander("✅Personalized Study Mentor"):
+                st.write("PrepSmart provides personalized mentoring to help students achieve their academic goals.")
+            with st.expander("✅Intelligent Question Bank Creation"):
+                st.write("PrepSmart can create question bank for any subject and any topic.")
+            with st.expander("✅Smart Study Planner"):
+                st.write("PrepSmart can plan study schedule for students.")
+            with st.expander("✅Dual Mode Answer Generation"):
+                st.write("PrepSmart can generate answers from both uploaded notes and typed text.")
+            with st.expander("✅Answer Checker with Feedback"):
+                st.write("PrepSmart can check answers for students and provide feedback.")
+            with st.expander("✅Easy Contact for Queries and Feedback"):
+                st.write("PrepSmart provides contact us feature to get in touch with us.")
+            with st.expander("✅User-Friendly Interface & Secure Data Handling"):
+                st.write("PrepSmart has user-friendly interface and secure data handling.")
+            with st.expander("✅24x7 Support & Regular Updates"):
+                st.write("PrepSmart provides 24x7 support and regular updates.")
+        
+        with right_col:
+            why_prepsmart = load_lottie_file("animations resources/why_prepsmart.json")
+            st_lottie.st_lottie(why_prepsmart, width=400, height=600, loop=True)
+
+    st.divider()
 
     with st.container(border=True):
         st.subheader("FAQs❓", divider='rainbow')
