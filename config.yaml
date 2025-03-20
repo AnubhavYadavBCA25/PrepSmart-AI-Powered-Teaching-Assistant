@@ -4,6 +4,14 @@ cookie:
   name: prepsmart
 credentials:
   usernames:
+    anubhav77:
+      course: BCA
+      email: anubhavyadav2004ff@gmail.com
+      name: Anubhav Yadav
+      password: $2b$12$uZf6stbRJwDwJEj0NVi/lOsSJdj4IUMDRte1mMdOtTkaMVYyirDmW
+      preferred_lang: English
+      specialization: Data Science
+      year_of_study: Final Year
     demo:
       email: demo@email.com
       name: Demo Test
