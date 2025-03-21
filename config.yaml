@@ -14,6 +14,15 @@ credentials:
       year_of_study: Final Year
     demo:
       email: demo@email.com
+      logged_in: true
       name: Demo Test
       password: $2b$12$FOlmJf8b9/89/IqEqTah2OEXStNMyyBJ8mgyR/YK9hPDlD7eHjyqG
       preferred_lang: English
+    sparsh2025:
+      course: BCA
+      email: sparshjais@gmail.com
+      name: Sparsh Jaiswal
+      password: $2b$12$e/1/v8g0IzRFa5loNglRF.2Lsx5xIBm0ArqORZvjr1DapN/qkgMwS
+      preferred_lang: English
+      specialization: Data Science
+      year_of_study: Final Year

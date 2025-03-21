@@ -98,4 +98,4 @@ def user_input(user_question):
         , return_only_outputs=True)
 
     print(response)
-    st.write("Reply: ", response["output_text"])
+    st.write("Answer: ", response["output_text"])

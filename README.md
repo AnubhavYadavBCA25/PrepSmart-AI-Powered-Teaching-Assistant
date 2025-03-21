@@ -6,7 +6,7 @@
 - Provides a seamless and personalized learning experience by integrating AI-powered features.
 
 <p align='center'>
-    <img src="resources/project-intro.png" width="1412" height="878">
+    <img src="resources/project-intro.png" width="1412" height="600">
 </p>
 
 ### 🎯 Objective
@@ -23,7 +23,7 @@
 6. Contact Us – Submit queries and feedback directly through the platform.
 
 <p align='center'>
-    <img src="resources/feature-intro.png" width="1456" height="793">
+    <img src="resources/feature-intro.png" width="1456" height="600">
 </p>
 
 ### 🔥 Why PrepSmart?
