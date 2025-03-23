@@ -12,6 +12,7 @@ genai.configure(api_key=GOOGLE_API_KEY)
 
 user_data = get_user_details()
 name = user_data.get("name")
+preferred_lang = user_data.get("preferred_lang")
 
 # Safety Settings
 safety_settings = [
@@ -47,7 +48,15 @@ generation_config_sp = {
 # System Instruction
 system_instructions = f"""
             You are a PrepSmart Study Plan maker, you can design the study plan for students based on their prefference and their need. Try to use
-            emojies which give student an effective and 
+            emojies which give student an effective and attractive study plan. You should provide the reponse related to education only, if student
+             ask any other questions like related to finance, healthcare, or any other domain (excluding education), then you should not provide the 
+             answer and ask student to ask the question related to education only.
+
+            Student Name is: {name}
+            Preferred Language is: {preferred_lang}, study plan will be generated based on the language you choose.
+
+            Important: You should provide the reponse related to education only, if student ask any other question, then you should not provide the answer
+            and ask student to ask the question related to education only.
 """
 
 model = genai.GenerativeModel(model_name="gemini-1.5-flash",
