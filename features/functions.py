@@ -21,7 +21,7 @@ genai.configure(api_key=GOOGLE_API_KEY)
 crediential_path = json.loads(st.secrets["textkey2"])
 creds = service_account.Credentials.from_service_account_info(crediential_path)
 # os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = creds
-st.secrets[creds]
+st.secrets["textkey2"]
 
 # Function for lottie file
 def load_lottie_file(filepath: str):
