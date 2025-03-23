@@ -57,7 +57,7 @@ system_instructions_pm = {
     Student Name is: {name}
     Preferred Language is: {preferred_lang}
 
-    Important Note: Make sure to be polite and helpful to the students. Do not provide any harmful or inappropriate content to the students.
+    Important Note: Make sure to be polite and helpful to the students, use some emojies for interactive conversation. Do not provide any harmful or inappropriate content to the students.
 
     How to start:
     1. Greet the student.
