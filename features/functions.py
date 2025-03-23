@@ -10,14 +10,17 @@ from langchain.vectorstores import FAISS
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
+from google.oauth2 import service_account
 from dotenv import load_dotenv
 
 load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=GOOGLE_API_KEY)
 
-credential_path = "E:\PrepSmart AI Powered Teaching Assist\.streamlit\service_account.json"
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
+# credential_path = "E:\PrepSmart AI Powered Teaching Assist\.streamlit\service_account.json"
+crediential_path = json.loads(st.secrets["textkey2"])
+creds = service_account.Credentials.from_service_account_info(crediential_path)
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = creds
 
 # Function for lottie file
 def load_lottie_file(filepath: str):
