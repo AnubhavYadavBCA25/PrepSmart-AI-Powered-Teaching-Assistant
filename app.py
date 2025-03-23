@@ -1,8 +1,7 @@
-import streamlit as st
 import streamlit_lottie as st_lottie
 from features.functions import load_lottie_file
 from features.auth import authentication
-
+import streamlit as st
 st.set_page_config(page_title="PrepSmart",
             page_icon=":shark:",
             layout="wide",
