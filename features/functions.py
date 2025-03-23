@@ -20,7 +20,8 @@ genai.configure(api_key=GOOGLE_API_KEY)
 # credential_path = "E:\PrepSmart AI Powered Teaching Assist\.streamlit\service_account.json"
 crediential_path = json.loads(st.secrets["textkey2"])
 creds = service_account.Credentials.from_service_account_info(crediential_path)
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = creds
+# os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = creds
+st.secrets[creds]
 
 # Function for lottie file
 def load_lottie_file(filepath: str):
