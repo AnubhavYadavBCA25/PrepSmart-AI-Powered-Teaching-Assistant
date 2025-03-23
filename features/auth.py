@@ -1,15 +1,20 @@
 import streamlit as st
 import yaml
+import json
 from yaml.loader import SafeLoader
 from streamlit_authenticator.utilities import Hasher, LoginError
 import streamlit_authenticator as stauth
 from google.cloud import firestore
 from google.cloud.firestore import Client
+from google.oauth2 import service_account
 
 # Firestore Database
 @st.cache_resource
 def get_db():
-    db = firestore.Client.from_service_account_json(".streamlit/firestore-key.json")
+    key_dict = json.loads(st.secrets["textkey"])
+    creds = service_account.Credentials.from_service_account_info(key_dict)
+    db = Client(credentials=creds, project="prepsmartai-d1457")
+    # db = firestore.Client.from_service_account_json(".streamlit/firestore-key.json")
     return db
 
 # Post Registration Data
