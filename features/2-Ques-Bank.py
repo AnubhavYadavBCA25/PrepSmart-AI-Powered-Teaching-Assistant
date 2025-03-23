@@ -114,7 +114,7 @@ with st.spinner("Generating Questions..."):
         def stream_output():
             for word in output.split(" "):
                 yield word + " "
-                time.sleep(0.02)
+                time.sleep(0.05)
         st.write_stream(stream_output())
 
     else:

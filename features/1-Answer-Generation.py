@@ -113,7 +113,7 @@ if ans_type == "Text Based Answer":
                 def stream_output_ai_text():
                     for word in output_ai_text.split(" "):
                         yield word + " "
-                        time.sleep(0.02)
+                        time.sleep(0.05)
                 st.write_stream(stream_output_ai_text())
             else:
                 st.warning("Please fill all the required fields.")
@@ -172,7 +172,7 @@ else:
             def stream_output_code():
                 for word in output_code.split(' '):
                     yield word + ' '
-                    time.sleep(0.02)
+                    time.sleep(0.05)
             st.write_stream(stream_output_code())
         else:
             st.warning("Please fill all the required fields.")

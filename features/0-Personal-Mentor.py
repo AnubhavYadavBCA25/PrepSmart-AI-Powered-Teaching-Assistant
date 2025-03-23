@@ -94,9 +94,14 @@ if user_input:
     # Send user's message to Gemini and get the response
     gemini_response = fetch_gemini_response(user_input)
 
+    def stream_response():
+        for res in gemini_response.split(" "):
+            yield res + " "
+            time.sleep(0.05)
+
     # Display Gemini's response
     with st.chat_message("assistant"):
-        st.markdown(gemini_response)
+        st.write_stream(stream_response())
 
     # Add user and assistant messages to the chat history
     st.session_state.chat_session.history.append({"role": "user", "content": user_input})

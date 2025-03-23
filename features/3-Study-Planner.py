@@ -103,7 +103,7 @@ if plan_type == "Study Plan":
                 def stream_output_text():
                     for word in output_text.split(" "):
                         yield word + " "
-                        time.sleep(0.02)
+                        time.sleep(0.05)
                 st.write_stream(stream_output_text())
             else:
                 st.warning("Please fill all the required fields.")
@@ -139,7 +139,7 @@ if plan_type == "Study Plan":
                 def stream_output_text():
                     for word in output_text.split(" "):
                         yield word + " "
-                        time.sleep(0.02)
+                        time.sleep(0.05)
                 st.write_stream(stream_output_text())
             else:
                 st.warning("Please fill all the required fields.")
@@ -171,7 +171,7 @@ elif plan_type == "Syllabus Roadmap":
             def stream_output_text():
                 for word in output_text.split(" "):
                     yield word + " "
-                    time.sleep(0.02)
+                    time.sleep(0.05)
             st.write_stream(stream_output_text())
         else:
             st.warning("Please fill all the required fields.")
@@ -204,7 +204,7 @@ else:
             def stream_output_text():
                 for word in output_text.split(" "):
                     yield word + " "
-                    time.sleep(0.02)
+                    time.sleep(0.05)
             st.write_stream(stream_output_text())
         else:
             st.warning("Please fill all the required fields.")

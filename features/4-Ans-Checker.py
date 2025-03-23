@@ -110,7 +110,7 @@ if answer_type == "Text Based Answer":
             def stream_output_text():
                 for word in output_text.split(" "):
                     yield word + " "
-                    time.sleep(0.02)
+                    time.sleep(0.05)
             st.write_stream(stream_output_text())
         
         else:
@@ -147,7 +147,7 @@ else:
             def stream_output_code():
                 for word in output_code.split(" "):
                     yield word + " "
-                    time.sleep(0.02)
+                    time.sleep(0.05)
             st.write_stream(stream_output_code())
         
         else:

@@ -1,5 +1,6 @@
 import streamlit as st 
 import json
+import time
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
@@ -98,4 +99,9 @@ def user_input(user_question):
         , return_only_outputs=True)
 
     print(response)
-    st.write("Answer: ", response["output_text"])
+    output_text = response["output_text"]
+    def stream_output_text():
+        for word in output_text.split(" "):
+            yield word + " "
+            time.sleep(0.05)
+    st.write_stream(stream_output_text())
