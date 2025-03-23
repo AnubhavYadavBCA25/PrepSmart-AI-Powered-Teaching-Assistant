@@ -3,6 +3,7 @@ import json
 from features.auth import get_user_details
 from google.cloud import firestore
 from google.cloud.firestore import Client
+from google.oauth2 import service_account
 
 # Get user details
 user_data = get_user_details()
@@ -12,7 +13,10 @@ email = user_data.get("email")
 # Firestore Database
 @st.cache_resource
 def get_db():
-    db = firestore.Client.from_service_account_json(".streamlit/firestore-key.json")
+    key_dict = json.loads(st.secrets["textkey"])
+    creds = service_account.Credentials.from_service_account_info(key_dict)
+    db = Client(credentials=creds, project="prepsmartai-d1457")
+    # db = firestore.Client.from_service_account_json(".streamlit/firestore-key.json")
     return db
 
 # Post General Feedback
