@@ -139,7 +139,11 @@ else:
     with st.spinner("Checking the Code..."):
         if language and question and code and purpose is not None:
             prompt = f"""
-
+                Check the code for the question {question} in {language} language. The code provided by the student is: 
+                {code}.
+                If the code is incorrect, then debug the code and provide the correct code with logic explanation. And if
+                the code is correct, then provide the feedback to the student that how to optimize the code. Perform is based
+                on the purpose selected by the user which is {purpose}. 
             """
             response = model.generate_content(prompt)
             st.subheader(f"Hello {name}, Here is Your Correct Code")

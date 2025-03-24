@@ -1,10 +1,12 @@
 import os
+import json
 import time
 import streamlit as st
 import google.generativeai as genai
 from dotenv import load_dotenv
 from features.functions import *
 from features.auth import get_user_details
+from google.oauth2 import service_account
 
 load_dotenv()
 
@@ -18,8 +20,11 @@ preferred_lang = user_details.get("preferred_lang")
 GOOGLE_API_KEY = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=GOOGLE_API_KEY)
 
-credential_path = "E:\PrepSmart AI Powered Teaching Assist\.streamlit\service_account.json"
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
+# credential_path = "E:\PrepSmart AI Powered Teaching Assist\.streamlit\service_account.json"
+# os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
+crediential_path = json.loads(st.secrets["textkey2"])
+creds = service_account.Credentials.from_service_account_info(crediential_path)
+st.secrets["textkey2"]
 
 # Safety Settings
 safety_settings = [
