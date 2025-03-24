@@ -24,7 +24,7 @@ genai.configure(api_key=GOOGLE_API_KEY)
 # os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 crediential_path = json.loads(st.secrets["textkey2"])
 creds = service_account.Credentials.from_service_account_info(crediential_path)
-st.secrets["textkey2"]
+secret = st.secrets["textkey2"]
 
 # Safety Settings
 safety_settings = [
