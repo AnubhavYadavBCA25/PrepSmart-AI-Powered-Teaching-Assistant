@@ -110,7 +110,8 @@ def show_register_form():
             with st.spinner("Registering..."):
                 if new_username and new_password and new_email:
                     # Hash the new password
-                    hashed_password = Hasher([new_password]).hash(new_password)
+                    hasher = Hasher()
+                    hashed_password = hasher.hash(new_password)
                     if 'credentials' not in config:
                         config['credentials'] = {}
                     if 'usernames' not in config['credentials']:
