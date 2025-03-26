@@ -37,6 +37,14 @@ def post_registration_data(db: Client, name, username, email, password, lang, co
 with open('config.yaml', 'r', encoding='utf-8') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
+# Ensure config structure
+if config is None:
+    config = {}
+if 'credentials' not in config:
+    config['credentials'] = {}
+if 'usernames' not in config['credentials']:
+    config['credentials']['usernames'] = {}
+
 # Initialize session state for register page
 if 'register' not in st.session_state:
     st.session_state['register'] = False
